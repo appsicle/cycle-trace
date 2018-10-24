@@ -9,7 +9,9 @@ export default new Vuex.Store({
         starting_stations: {},
         ending_stations: {},
         start_station_array: [],
-        end_station_array: []
+        end_station_array: [],
+        start_station_labels: [],
+        end_station_labels: []
     },
     mutations: {
         setStats(state, stats) {
@@ -26,6 +28,12 @@ export default new Vuex.Store({
         },
         setEndArray(state, array){
             state.end_station_array = array;
+        },
+        setStartLabels(state, array){
+            state.start_station_labels = array;
+        },
+        setEndLabels(state, array){
+            state.end_station_labels = array;
         }
     },
     getters: {
@@ -48,6 +56,12 @@ export default new Vuex.Store({
         },
         getEndArray: (state) => {
             return state.end_station_array;
+        },
+        getStartLabels: (state) => {
+            return state.start_station_labels;
+        },
+        getEndLabels: (state) => {
+            return state.end_station_labels;
         }
     }
 });

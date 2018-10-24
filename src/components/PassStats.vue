@@ -25,7 +25,7 @@
                 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'Average Distance'
+                    labelString: 'Average Distance Per Ride'
                 }
             }]
         }
@@ -53,8 +53,8 @@
                         labels: this.labels,
                         datasets: [
                             {
-                                label: 'Average Distance (meters)',
-                                backgroundColor: '#f87979',
+                                label: 'Average Distance Traveled (meters)',
+                                backgroundColor: ['#f87979', '#8d6a9f', '#c5cbd3', '#8cbcb9'],
                                 data: this.data,
 
                             }

@@ -1,18 +1,21 @@
 <template>
-    <v-app style="background: white">
+    <div>
         <DC/>
-        <DonutGraph/>
-    </v-app>
+        <DonutGraphS/>
+        <DonutGraphE/>
+    </div>
 </template>
 
 <script>
     import DC from './DonutController'
-    import DonutGraph from './DonutGraph'
+    import DonutGraphS from './DonutGraphStarting'
+    import DonutGraphE from './DonutGraphEnding'
 
     export default {
         components: {
             DC,
-            DonutGraph
+            DonutGraphS,
+            DonutGraphE
         }
     }
 </script>
