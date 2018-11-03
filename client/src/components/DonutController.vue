@@ -3,21 +3,25 @@
         <h2 class="text-xs-center">Select a Pass Type to Group By</h2>
         <div class="text-xs-center">
             <v-btn style="border: 1px solid gray;"
+                   class="text-capitalize"
                    :flat="clicked!='Monthly Pass'"
                    :color="clicked==='Monthly Pass'?'success' : 'undefined'"
                    @click="monthly">Monthly Pass
             </v-btn>
             <v-btn style="border: 1px solid gray;"
+                   class="text-capitalize"
                    :flat="clicked!='Flex Pass'"
                    :color="clicked==='Flex Pass'?'success' : 'undefined'"
                    @click="flex">Flex Pass
             </v-btn>
             <v-btn style="border: 1px solid gray;"
+                   class="text-capitalize"
                    :flat="clicked!='Walk-up'"
                    :color="clicked==='Walk-up'?'success' : 'undefined'"
                    @click="walk">Walk-Up
             </v-btn>
             <v-btn style="border: 1px solid gray;"
+                   class="text-capitalize"
                    :flat="clicked!='Staff Annual'"
                    :color="clicked==='Staff Annual'?'success' : 'undefined'"
                    @click="staff">Staff Annual
