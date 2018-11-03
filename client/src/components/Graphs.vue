@@ -1,18 +1,38 @@
 <template>
     <v-app>
         <div class="graphs-container">
-            <v-card style="margin: 20px; padding: 0;">
-                <PassStats :data="averageDistances"/>
-                <v-card-text class="text-xs-center">On average, Monthly Pass holders travel a much farther distance than other pass holders! If you're commuting from far away, you might want to invest in a monthly pass.</v-card-text>
-            </v-card>
-            <v-card style="margin: 20px; padding: 0;">
-                <Pie :data="frequency"></Pie>
-                <v-card-text class="text-xs-center">The majority of bike share users in Los Angeles are Monthly Pass holders! If you're gonna use the bike share, you might as well become a regular user.</v-card-text>
-            </v-card>
-            <v-card style="margin: 20px; padding: 0;">
-                <Donut></Donut>
-                <v-card-text class="text-xs-center">Monthly Pass holders and Flex Pass holders have most popular start and end stations in common whereas Walk-up holders and Staff Annual bikers have most popular start and end stations in common! Depending on the route you take, you might want to invest in a different pass.</v-card-text>
-            </v-card>
+            <transition
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+            mode="out-in">
+                <keep-alive>
+            <router-view :data="{'frequency': frequency, 'averageDistances': averageDistances}"></router-view>
+                </keep-alive>
+            </transition>
+            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
+                <!--<PassStats :data="averageDistances"/>-->
+                <!--<v-card-text class="text-xs-center">On average, <strong>Monthly Pass holders</strong> travel a much-->
+                    <!--farther distance than other pass holders! If you're commuting from far away, you might want to-->
+                    <!--invest in a monthly pass.-->
+                <!--</v-card-text>-->
+            <!--</v-card>-->
+
+            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
+                <!--<Pie :data="frequency"></Pie>-->
+                <!--<v-card-text class="text-xs-center">The majority of bike share users in Los Angeles are <strong>Monthly Pass-->
+                    <!--holders!</strong> If you're gonna use the bike share, you might as well become a regular user.-->
+                <!--</v-card-text>-->
+            <!--</v-card>-->
+
+            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
+                <!--<Donut></Donut>-->
+                <!--<v-card-text class="text-xs-center"><strong>Monthly Pass holders and Flex Pass holders</strong> have most popular start-->
+                    <!--and end stations in common whereas <strong>Walk-up holders and Staff Annual</strong> bikers have most popular start-->
+                    <!--and end stations in common! Depending on the route you take, you might want to invest in a different-->
+                    <!--pass.-->
+                <!--</v-card-text>-->
+            <!--</v-card>-->
+
         </div>
     </v-app>
 </template>
@@ -21,6 +41,9 @@
     import PassStats from './PassStats'
     import Pie from './Pie'
     import Donut from './Donut'
+
+    Chart.defaults.global.defaultFontSize = 13.5;
+    Chart.defaults.global.defaultFontColor = 'black';
 
     export default {
         components: {
@@ -46,6 +69,7 @@
                 for (var key in types) {
                     tempArray.push(this.$store.getters.getAttributes(types[key], 'frequency'));
                 }
+
                 return tempArray;
             }
         },
@@ -66,8 +90,11 @@
     }
 </script>
 
-<style scoped>
-    .graphs-container div {
-        padding-bottom: 70px;
+<style>
+    .graphs-container{
+        margin-top: 64px;
+        margin-left: 10%;
+        margin-right: 10%;
     }
+
 </style>

@@ -1,7 +1,8 @@
 <template>
     <div>
         <DC/>
-        <DonutGraphS/>
+        <DonutGraphS style="padding-bottom: 60px;"></DonutGraphS>
+
         <DonutGraphE/>
     </div>
 </template>

@@ -7,12 +7,19 @@
         title: {
             display: true,
             text: 'Frequency of Pass Type'
+        },
+        layout: {
+            padding: {
+                top: 10
+            }
         }
     };
     export default {
         extends: Pie,
 
-        props: ['data'],
+        props: {
+            data: Object
+        },
 
         watch: {
             data: function () {
@@ -22,6 +29,8 @@
         },
 
         mounted() {
+            console.log('rendering.');
+            console.log(this.data);
             this.renderPieChart()
         },
 
@@ -32,7 +41,7 @@
                         datasets: [
                             {
                                 backgroundColor: ['#bed7d1', '#f7ebc3', '#fbd6c6', '#f8e1e7'],
-                                data: this.data,
+                                data: this.data.frequency,
                             }
                         ]
                     }, options
@@ -41,7 +50,7 @@
 
         },
         computed: {
-            labels(){
+            labels() {
                 return this.$store.getters.getPassTypes;
             }
         }
