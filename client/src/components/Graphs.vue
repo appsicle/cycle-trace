@@ -2,8 +2,8 @@
     <v-app>
         <div class="graphs-container">
             <transition
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
+            enter-active-class="animated fast fadeIn"
+            leave-active-class="animated faster fadeOut"
             mode="out-in">
                 <keep-alive>
             <router-view :data="{'frequency': frequency, 'averageDistances': averageDistances}"></router-view>
