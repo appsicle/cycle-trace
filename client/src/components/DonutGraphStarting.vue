@@ -26,7 +26,7 @@
         },
 
         mounted() {
-            this.$http.get('http://localhost:3000/starting').then(response => {
+            this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/starting').then(response => {
                var x = response.body['Monthly Pass'].slice(0,4);
                for(var i = 0; i < x.length; ++i){
                    this.initial_data.push(x[i][1]);

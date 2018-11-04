@@ -22,9 +22,11 @@
                 </v-card-title>
                 <p class="neat-text-body bottom-text">
                     <strong>Monthly Pass holders and Flex Pass holders</strong> have their most popular start
-                    and end stations in common whereas <strong>Walk-up holders and Staff Annual</strong> bikers have their most popular start
+                    and end stations in common whereas <strong>Walk-up holders and Staff Annual</strong> bikers have
+                    their most popular start
                     and end stations in common! Depending on the route you take, you might want to invest in a different
-                    pass. In order for the LA bike share to <strong>improve user acquisition and retention</strong>, it should target
+                    pass. In order for the LA bike share to <strong>improve user acquisition and retention</strong>, it
+                    should target
                     stations 3030 and 3005 with advertisements prepared to retain returning customers and station 3069
                     with advertisements prepared to acquire new customers.
                 </p>
@@ -50,7 +52,7 @@
 </script>
 
 <style>
-    .donut-container{
+    .donut-container {
         display: flex;
         justify-content: space-evenly;
     }

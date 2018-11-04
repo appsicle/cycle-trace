@@ -1,12 +1,12 @@
 <script>
-    import {Pie} from 'vue-chartjs'
+    import {Line} from 'vue-chartjs';
 
     const options = {
         responsive: true,
         maintainAspectRatio: false,
         title: {
             display: true,
-            text: 'Quantity of Each Pass Purchased'
+            text: 'Average Duration of Rides vs. Time'
         },
         layout: {
             padding: {
@@ -16,38 +16,32 @@
     };
 
     export default {
-        data() {
-            return {
-                value: false
-            }
-        },
-        extends: Pie,
-
+        extends: Line,
         props: {
             data: Object
         },
-
         watch: {
             data: function () {
                 this.$data._chart.destroy();
-                this.renderPieChart();
+                this.renderLineChart();
             }
         },
-
         mounted() {
-            this.renderPieChart()
+            this.renderLineChart()
         },
 
         methods: {
-            renderPieChart() {
+            renderLineChart() {
                 this.renderChart({
                         labels: this.labels,
-                        datasets: [
-                            {
-                                backgroundColor: ['#bed7d1', '#f7ebc3', '#fbd6c6', '#f8e1e7'],
-                                data: this.data.frequency,
-                            }
-                        ]
+
+                        datasets: [{
+                            label: "Average Duration of Ride",
+                            data: this.duration_data,
+                            borderColor: '#b185a7',
+                            backgroundColor: '#8d6b94' ,
+                            fill: false
+                        }]
                     }, options
                 );
             }
@@ -55,8 +49,13 @@
         },
         computed: {
             labels() {
-                return this.$store.getters.getPassTypes;
+                return Object.keys(this.$store.getters.getSeasons);
+            },
+            duration_data() {
+                return this.data.seasonalData[1];
             }
         }
     }
+
+
 </script>

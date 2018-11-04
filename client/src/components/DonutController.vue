@@ -75,17 +75,15 @@
                 this.$store.commit('setEndLabels', end_labels);
             },
             setStarting() {
-                this.$http.get('http://localhost:3000/starting').then(response => {
+                this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/starting').then(response => {
                     this.$store.commit('setStarting', response.body);
                 }, response => {
-                    console.log(response);
                 })
             },
             setEnding() {
-                this.$http.get('http://localhost:3000/ending').then(response => {
+                this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/ending').then(response => {
                     this.$store.commit('setEnding', response.body);
                 }, response => {
-                    console.log(response);
                 })
             }
 
@@ -97,7 +95,6 @@
             }
         },
         created() {
-            console.log('created')
             this.setStarting();
             this.setEnding();
         }

@@ -18,7 +18,8 @@
                 <p class="neat-text-body bottom-text">
                     The majority of bike share users in Los Angeles are Monthly Pass
                     holders! This shows that some features of the bike share may seem more appealing
-                    to those that are permanent customers rather than new-comers. In order to <strong>improve user acquisition</strong>,
+                    to those that are permanent customers rather than new-comers. In order to <strong>improve user
+                    acquisition</strong>,
                     the bike share system could possibly provide extra attention to please first time walk-up customers.
 
                 </p>

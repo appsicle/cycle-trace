@@ -11,7 +11,9 @@ export default new Vuex.Store({
         start_station_array: [],
         end_station_array: [],
         start_station_labels: [],
-        end_station_labels: []
+        end_station_labels: [],
+        seasons: {},
+        routes: {}
     },
     mutations: {
         setStats(state, stats) {
@@ -23,17 +25,23 @@ export default new Vuex.Store({
         setEnding(state, data) {
             state.ending_stations = data;
         },
-        setStartArray(state, array){
+        setStartArray(state, array) {
             state.start_station_array = array;
         },
-        setEndArray(state, array){
+        setEndArray(state, array) {
             state.end_station_array = array;
         },
-        setStartLabels(state, array){
+        setStartLabels(state, array) {
             state.start_station_labels = array;
         },
-        setEndLabels(state, array){
+        setEndLabels(state, array) {
             state.end_station_labels = array;
+        },
+        setSeasons(state, data) {
+            state.seasons = data;
+        },
+        setRoutes(state, data) {
+            state.routes = data;
         }
     },
     getters: {
@@ -62,6 +70,12 @@ export default new Vuex.Store({
         },
         getEndLabels: (state) => {
             return state.end_station_labels;
+        },
+        getSeasons: (state) => {
+            return state.seasons;
+        },
+        getRoutes: (state) => {
+            return state.routes;
         }
     }
 });

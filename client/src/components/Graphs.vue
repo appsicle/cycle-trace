@@ -2,36 +2,14 @@
     <v-app>
         <div class="graphs-container">
             <transition
-            enter-active-class="animated fast fadeIn"
-            leave-active-class="animated faster fadeOut"
-            mode="out-in">
+                    enter-active-class="animated fast fadeIn"
+                    leave-active-class="animated fast fadeOut"
+                    mode="out-in">
                 <keep-alive>
-            <router-view :data="{'frequency': frequency, 'averageDistances': averageDistances}"></router-view>
+                    <router-view
+                            :data="{'frequency': frequency, 'averageDistances': averageDistances, 'seasonalData': seasonalData, 'bubbles': routes}"></router-view>
                 </keep-alive>
             </transition>
-            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
-                <!--<PassStats :data="averageDistances"/>-->
-                <!--<v-card-text class="text-xs-center">On average, Monthly Pass holders travel a much-->
-                    <!--farther distance than other pass holders! If you're commuting from far away, you might want to-->
-                    <!--invest in a monthly pass.-->
-                <!--</v-card-text>-->
-            <!--</v-card>-->
-
-            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
-                <!--<Pie :data="frequency"></Pie>-->
-                <!--<v-card-text class="text-xs-center">The majority of bike share users in Los Angeles are <strong>Monthly Pass-->
-                    <!--holders!</strong> If you're gonna use the bike share, you might as well become a regular user.-->
-                <!--</v-card-text>-->
-            <!--</v-card>-->
-
-            <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
-                <!--<Donut></Donut>-->
-                <!--<v-card-text class="text-xs-center"><strong>Monthly Pass holders and Flex Pass holders</strong> have most popular start-->
-                    <!--and end stations in common whereas <strong>Walk-up holders and Staff Annual</strong> bikers have most popular start-->
-                    <!--and end stations in common! Depending on the route you take, you might want to invest in a different-->
-                    <!--pass.-->
-                <!--</v-card-text>-->
-            <!--</v-card>-->
 
         </div>
     </v-app>
@@ -46,8 +24,8 @@
     Chart.defaults.global.defaultFontColor = 'black';
 
     export default {
-        data(){
-            return{
+        data() {
+            return {
                 text: {
                     distance: 'On average, Monthly Pass holders travel a much\n' +
                         '                    farther distance than other pass holders! If you\'re commuting from far away, you might want to\n' +
@@ -83,12 +61,55 @@
                 }
 
                 return tempArray;
+            },
+            seasonalData() {
+                var seasons = this.$store.getters.getSeasons;
+                var frequency_data = [];
+                var duration_data = [];
+                for (var key in seasons) {
+                    frequency_data.push(seasons[key].frequency);
+                    duration_data.push(seasons[key].average_time);
+                }
+                return [frequency_data, duration_data];
+            },
+            routes() {
+                var routes = this.$store.getters.getRoutes;
+                const bubbles = [
+                    {
+                        x: 0,
+                        y: 0,
+                        r: 0
+                    }
+                ];
+                for (var key in routes) {
+                    var bubble = {
+                        x: routes[key][0].slice(0, 4),
+                        y: routes[key][0].slice(6),
+                        r: routes[key][1] / 10
+                    };
+                    bubbles.push(bubble);
+                }
+                return bubbles;
             }
         },
         methods: {
             setDefault() {
-                this.$http.get('http://localhost:3000').then(response => {
+                this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/').then(response => {
                     this.$store.commit('setStats', response.body);
+                }, response => {
+                    console.log(response);
+                })
+            },
+            setSeasons() {
+                this.$http.get('http://localhost:3000/seasons').then(response => {
+                    this.$store.commit('setSeasons', response.body);
+                }, response => {
+                    console.log(response);
+                })
+            },
+            setRoutes() {
+                this.$http.get('http://localhost:3000/routes').then(response => {
+                    this.$store.commit('setRoutes', response.body);
                 }, response => {
                     console.log(response);
                 })
@@ -97,17 +118,20 @@
         },
         beforeMount() {
             this.setDefault();
+            this.setSeasons();
+            this.setRoutes();
         }
 
     }
 </script>
 
 <style>
-    .graphs-container{
+    .graphs-container {
         margin-top: 64px;
         margin-left: 10%;
         margin-right: 10%;
     }
+
     .bottom-text-container {
         height: 400px;
     }
@@ -117,7 +141,7 @@
         font-size: 3vh;
     }
 
-    .page-container{
+    .page-container {
         text-align: center;
     }
 

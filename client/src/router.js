@@ -7,6 +7,8 @@ import Distance from './components/pages/Distance'
 import Frequency from './components/pages/Frequency'
 import Station from './components/pages/Stations'
 import Landing from './components/pages/Landing'
+import Seasons from './components/pages/Seasons'
+import Routes from './components/pages/Routes'
 
 export const routes = [
     {
@@ -24,6 +26,14 @@ export const routes = [
     {
         path: '/stations',
         component: Station
+    },
+    {
+        path: '/seasons',
+        component: Seasons
+    },
+    {
+        path: '/routes',
+        component: Routes
     }
 ];
 
