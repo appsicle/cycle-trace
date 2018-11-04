@@ -27,10 +27,11 @@ When parsing through the data for the backend, I searched for data structures si
 
 When hosting the backend data, I struggled trying to deploy the backend onto heroku because I did not want to create a separate repository for my backend. Instead, I went with aws ec2 and used pm2 to keep the server up indefinitely.
 
+There were many challenges when designing the ui/ux for the page. The biggest problem was having the bottom dialog appear on scroll. Since the pages were purposely short to fit onto one screen without scrolling, there was no scrollbar. Thus, there was no way to detect the user overscrolling through the scrollbar's data. Instead, I tinkered with many variables until I discovered that 'wheel' activates even without a scrollbar. However, the wheel event fired almost 20 times when I scrolled just once, causing the bottom dialog to repeatedly open and close. To solve this problem, I used underscore.js to throttle the speed of event firing to once every 5 seconds.
+
 ## Improvements
 
-Looking back, I could have loaded the data onto a database instead of converting it into json files. This may have simplified the process.
-
+Looking back, I could have loaded the data onto a database instead of converting it into json files. This may have simplified the process. Furthermore, I would like to fit the landing page onto one screen without scrolling for consistency. There are also numerous improvements that could be made to the typography and overall layout.
 
 ## Future Plans
 
@@ -38,7 +39,7 @@ I plan to add more available graphs and endpoints for the api so I can include e
 
 ## Acknowledgments
 
-This was a coding challenge for Capital One, through which i learned a lot about web development, especially 
-deploying a webserver and separating the frontend and backend.
+This was a coding challenge for Capital One, through which I learned a lot about web development, especially about
+deploying a webserver and separating the frontend and backend. This project took a long time, but was worth it because I learned an incredible amount.
 
 
