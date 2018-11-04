@@ -3,10 +3,10 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 
-import Donut from './components/Donut'
-import Pie from './components/Pie'
-import PassStats from './components/PassStats'
-import Landing from './components/Landing'
+import Distance from './components/pages/Distance'
+import Frequency from './components/pages/Frequency'
+import Station from './components/pages/Stations'
+import Landing from './components/pages/Landing'
 
 export const routes = [
     {
@@ -15,15 +15,15 @@ export const routes = [
     },
     {
         path: '/distance',
-        component: PassStats
+        component: Distance
     },
     {
         path: '/frequency',
-        component: Pie
+        component: Frequency
     },
     {
         path: '/stations',
-        component: Donut
+        component: Station
     }
 ];
 

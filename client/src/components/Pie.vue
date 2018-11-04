@@ -6,7 +6,7 @@
         maintainAspectRatio: false,
         title: {
             display: true,
-            text: 'Frequency of Pass Type'
+            text: 'Quantity of Each Pass Purchased'
         },
         layout: {
             padding: {

@@ -11,7 +11,7 @@
             </transition>
             <!--<v-card style="margin: 20px; padding: 0; background-color: #e7e5df;">-->
                 <!--<PassStats :data="averageDistances"/>-->
-                <!--<v-card-text class="text-xs-center">On average, <strong>Monthly Pass holders</strong> travel a much-->
+                <!--<v-card-text class="text-xs-center">On average, Monthly Pass holders travel a much-->
                     <!--farther distance than other pass holders! If you're commuting from far away, you might want to-->
                     <!--invest in a monthly pass.-->
                 <!--</v-card-text>-->
@@ -38,14 +38,26 @@
 </template>
 
 <script>
-    import PassStats from './PassStats'
+    import PassStats from './Bar'
     import Pie from './Pie'
-    import Donut from './Donut'
+    import Donut from './pages/Stations'
 
     Chart.defaults.global.defaultFontSize = 13.5;
     Chart.defaults.global.defaultFontColor = 'black';
 
     export default {
+        data(){
+            return{
+                text: {
+                    distance: 'On average, Monthly Pass holders travel a much\n' +
+                        '                    farther distance than other pass holders! If you\'re commuting from far away, you might want to\n' +
+                        '                    invest in a monthly pass.',
+                    frequency: 'The majority of bike share users in Los Angeles are Monthly Pass\n' +
+                        '                    holders! If you\'re gonna use the bike share, you might as well become a regular user.',
+                    stations: ''
+                }
+            }
+        },
         components: {
             PassStats,
             Pie,
@@ -95,6 +107,18 @@
         margin-top: 64px;
         margin-left: 10%;
         margin-right: 10%;
+    }
+    .bottom-text-container {
+        height: 400px;
+    }
+
+    .bottom-text {
+        padding-top: 30px;
+        font-size: 3vh;
+    }
+
+    .page-container{
+        text-align: center;
     }
 
 </style>

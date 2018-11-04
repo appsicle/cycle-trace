@@ -1,6 +1,6 @@
 <template>
     <div style="padding-top: 20px;">
-        <h2 class="text-xs-center">Select a Pass Type to Group By</h2>
+        <h1 class="text-xs-center" style="padding-bottom: 10px">Select a Pass Type to Group By</h1>
         <div class="text-xs-center">
             <v-btn style="border: 1px solid gray;"
                    class="text-capitalize"

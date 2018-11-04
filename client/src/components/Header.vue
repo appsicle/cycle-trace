@@ -8,9 +8,12 @@
                 <v-btn flat to="/frequency" class="body-1">Frequency Data</v-btn>
                 <v-btn flat to="/stations" class="body-1">Station Data</v-btn>
             </v-toolbar-items>
+
             <v-menu class="hidden-sm-and-up">
                 <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
                 <v-list dense>
+                    <v-subheader> GRAPHS</v-subheader>
+                    <v-divider></v-divider>
                     <v-list-tile
                             router
                             to="/distance">
@@ -18,6 +21,8 @@
                             <v-list-tile-title class="body-1">Distance</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+                    <v-divider></v-divider>
+
                     <v-list-tile
                             router
                             to="/frequency">
@@ -25,6 +30,7 @@
                             <v-list-tile-title class="body-1">Frequency</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+                    <v-divider></v-divider>
                     <v-list-tile
                             router
                             to="/stations">
@@ -33,7 +39,9 @@
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
+
             </v-menu>
+
         </v-toolbar>
 
     </div>
