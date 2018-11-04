@@ -1,5 +1,5 @@
 # Cycle Trace 
-A simple web app to display visualizations of data regarding the LA bike share system to satisfy the requirements of [Capital One's coding challenge](https://www.mindsumo.com/contests/bikeshare-data).
+A simple web app to display visualizations of data regarding the LA bike share system to satisfy the requirements of [Capital One's coding challenge](https://www.mindsumo.com/contests/bikeshare-data). Optimized for mobile devices!
 
 ## Built With
 
