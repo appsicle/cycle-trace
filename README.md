@@ -44,6 +44,6 @@ I plan to add more available graphs and endpoints for the api so I can include e
 ## Acknowledgments
 
 This was a coding challenge for Capital One, through which I learned a lot about web development, especially about
-deploying a webserver and separating the frontend and backend. This project took a long time, but was worth it because I learned an incredible amount.
+deploying a webserver and separating the frontend and backend. This project took a long (extremely long) time, but was worth it because I learned an incredible amount.
 
 
