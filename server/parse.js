@@ -10,36 +10,28 @@ fs.readFile('bike.csv', 'utf8', function (error, data) {
     }
 
     data = d3.csvParse(data);
-
     var processed_data = create_dict(data);
     var default_data = JSON.stringify(processed_data[0]);
     var starting_data = JSON.stringify(processed_data[1]);
     var ending_data = JSON.stringify(processed_data[2]);
-
-    fs.writeFile("data.json", default_data, 'utf8', function (err) {
-        if (err) {
-            console.log("An error occured while writing JSON Object to File.");
-            return console.log(err);
-        }
-        console.log("JSON file0 has been saved.");
-    });
-
-    fs.writeFile("starting.json", starting_data, 'utf8', function (err) {
-        if (err) {
-            console.log("An error occured while writing JSON Object to File.");
-            return console.log(err);
-        }
-        console.log("JSON file1 has been saved.");
-    });
-
-    fs.writeFile("ending.json", ending_data, 'utf8', function (err) {
-        if (err) {
-            console.log("An error occured while writing JSON Object to File.");
-            return console.log(err);
-        }
-        console.log("JSON file2 has been saved.");
-    });
+    var routes = JSON.stringify(sortRoutes(data));
+    var seasons = JSON.stringify(sortSeasonal(data));
+    writeTo("data.json", default_data);
+    writeTo("starting.json", starting_data);
+    writeTo("ending.json", ending_data);
+    writeTo("seasons.json", seasons);
+    writeTo("routes.json", routes);
 });
+
+function writeTo(dest, file){
+    fs.writeFile(dest, file, 'utf8', (err) => {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
+        console.log("file has been saved in " + dest);
+    })
+}
 
 
 /**
@@ -119,9 +111,79 @@ function create_dict(data) {
 
     calculate_average_dist(passholderStats);
     var packaged_data = sortStations(passholderStats);
-    console.log(packaged_data);
     return packaged_data;
 }
+
+/**
+ *
+ * @param data An array of objects which each contain the values of the parsed dataset
+ * @return seasons an object containing the frequency and average_time duration for each date in the dataset
+ */
+function sortSeasonal(data){
+    //how many of each pass per season july 21 - sept 20 summer, sept 21 - dec 20 fall, dec 21 - march 20 winter, march
+    const seasons = {};
+    //frequency per date
+    //{ date: { frequency: 1234, average_time: 1234 }}
+    for(var i = 0; i < data.length; ++i){
+        var currentDate = data[i]['Start Time'].slice(5, 10);
+        var time = parseInt(data[i]['Duration'])/60;
+
+        if(!(currentDate in seasons)){
+            seasons[currentDate] = {frequency: 1, total_time: 1, average_time: 1};
+        }else{
+            seasons[currentDate].frequency += 1; //pushing all month and days
+            seasons[currentDate].total_time += time;
+        }
+    }
+
+    for(var key in seasons){
+        seasons[key]['average_time'] = Math.round(seasons[key]['total_time'] / seasons[key]['frequency'] * 100)/100;
+    }
+
+    return seasons;
+}
+
+/**
+ *
+ * @param data An array of objects which each contain the values of the parsed dataset
+ * @return final An object storing the frequency of each route pattern which is a string combining the start and end station
+ */
+
+function sortRoutes(data){
+    const routes = {};
+    var sorted = [];
+    var final = {};
+
+    for(var i = 0; i < data.length; ++i){
+        var routeCode = data[i]['Starting Station ID'] +'->'+ data[i]['Ending Station ID'];
+        if(data[i]['Starting Station ID'] === data[i]['Ending Station ID']){
+            continue;
+        }
+        if(!(routeCode in routes)){
+            routes[routeCode] = 1;
+        }else{
+            routes[routeCode] += 1;
+        }
+    }
+    for(var key in routes){
+        sorted.push([key, routes[key]]);
+    }
+
+    sorted.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+
+    for(var i = 0; i < 60; ++i){ //only retrieve 60 entries of sorted data
+        final[i] = sorted[i];
+    }
+    return final;
+}
+
+/**
+ *
+ * @param passholderStats An object containing stats for each type of pass
+ * @returns {*[]} array storing the original stats along with starting and ending station data.
+ */
 
 function sortStations(passholderStats) {
     var starting = {};
