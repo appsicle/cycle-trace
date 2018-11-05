@@ -101,14 +101,14 @@
                 })
             },
             setSeasons() {
-                this.$http.get('http://localhost:3000/seasons').then(response => {
+                this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/seasons').then(response => {
                     this.$store.commit('setSeasons', response.body);
                 }, response => {
                     console.log(response);
                 })
             },
             setRoutes() {
-                this.$http.get('http://localhost:3000/routes').then(response => {
+                this.$http.get('http://ec2-107-23-31-8.compute-1.amazonaws.com:3000/routes').then(response => {
                     this.$store.commit('setRoutes', response.body);
                 }, response => {
                     console.log(response);

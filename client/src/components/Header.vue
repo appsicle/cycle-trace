@@ -52,7 +52,7 @@
                     <v-divider></v-divider>
                     <v-list-tile
                             router
-                            to="/seasons">
+                            to="/routes">
                         <v-list-tile-content>
                             <v-list-tile-title class="body-1">Routes</v-list-tile-title>
                         </v-list-tile-content>
