@@ -8,6 +8,20 @@
             display: true,
             text: 'Quantity of Rides vs. Time'
         },
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    callback(value, index, values) {
+                        return value + ' rides  '
+                    }
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Number of Rides'
+                }
+            }]
+        },
         layout: {
             padding: {
                 top: 10

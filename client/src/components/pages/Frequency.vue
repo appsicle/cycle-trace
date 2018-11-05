@@ -1,12 +1,13 @@
 <template>
     <div class="page-container">
-        <Pie :data="data"></Pie>
+        <v-card class="graph-card">
+            <Pie :data="data"></Pie>
+        </v-card>
         <v-bottom-sheet>
             <v-btn
                     color="info"
-                    style="margin-top: 20px"
+                    style="margin-top: 0px"
                     slot="activator"
-                    dark
             >
                 Read Analysis
             </v-btn>
@@ -17,11 +18,14 @@
                 </v-card-title>
                 <p class="neat-text-body bottom-text">
                     The majority of bike share users in Los Angeles are Monthly Pass
-                    holders! This shows that some features of the bike share may seem more appealing
-                    to those that are permanent customers rather than new-comers. In order to <strong>improve user
-                    acquisition</strong>,
-                    the bike share system could possibly provide extra attention to please first time walk-up customers.
-
+                    holders with Walk-Up users at a close second. This shows that the bike share is working extremely
+                    well in retaining
+                    Monthly Pass holders as well as recruiting new one time Walk-Up users. However, the Flex Pass is
+                    much less frequently purchased, perhaps due to an inefficient business model.
+                    In order to improve sales, the LA Bike Share could adapt their business model or improve marketing
+                    for the Flex-Pass to
+                    make it an option
+                    just as worthy as the Monthly Pass.
                 </p>
 
             </v-card>

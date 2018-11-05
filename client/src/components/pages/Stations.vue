@@ -1,17 +1,20 @@
 <template>
     <div class="page-container">
-        <DC/>
-        <div class="donut-container">
-            <DonutGraphS style="width: 47%;"></DonutGraphS>
-            <DonutGraphE style="width: 47%"></DonutGraphE>
-        </div>
+        <v-card class="graph-card">
+            <DC/>
+            <div class="donut-container">
+
+                <DonutGraphS style="width: 47%;"></DonutGraphS>
+                <DonutGraphE style="width: 47%"></DonutGraphE>
+            </div>
+
+        </v-card>
 
         <v-bottom-sheet>
             <v-btn
                     color="info"
                     style="margin-top: 20px"
                     slot="activator"
-                    dark
             >
                 Read Analysis
             </v-btn>
@@ -23,12 +26,11 @@
                 <p class="neat-text-body bottom-text">
                     <strong>Monthly Pass holders and Flex Pass holders</strong> have their most popular start
                     and end stations in common whereas <strong>Walk-up holders and Staff Annual</strong> bikers have
-                    their most popular start
-                    and end stations in common! Depending on the route you take, you might want to invest in a different
-                    pass. In order for the LA bike share to <strong>improve user acquisition and retention</strong>, it
-                    should target
-                    stations 3030 and 3005 with advertisements prepared to retain returning customers and station 3069
-                    with advertisements prepared to acquire new customers.
+                    their most popular start and end stations in common! This data suggests that commuters / regular users
+                    tend to travel through the same stations and one time users tend to travel through the same stations.
+                    In order to <strong>improve user acquisition</strong>, LA Bike Share should target areas
+                    surrounding the popular start and end stations for commuters with advertisements for the Monthly Pass and Flex Pass
+                    and areas surrounding the popular start and end stations for Walk-Up users with advertisements targeted at them.
                 </p>
 
             </v-card>

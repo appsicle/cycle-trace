@@ -8,6 +8,20 @@
             display: true,
             text: 'Average Duration of Rides vs. Time'
         },
+        scales: {
+            yAxes: [{
+                display: true,
+                ticks: {
+                    callback(value, index, values) {
+                        return value + ' min'
+                    }
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Average Duration Per Ride',
+                }
+            }]
+        },
         layout: {
             padding: {
                 top: 10

@@ -21,8 +21,8 @@
     import Donut from './pages/Stations'
 
     Chart.defaults.global.defaultFontSize = 13.5;
-    Chart.defaults.global.defaultFontColor = 'black';
-
+    Chart.defaults.global.defaultFontColor = '#303030';
+    Chart.defaults.global.defaultFontStyle = 'Bold';
     export default {
         data() {
             return {
@@ -133,7 +133,7 @@
     }
 
     .bottom-text-container {
-        height: 400px;
+        height: 500px;
     }
 
     .bottom-text {
@@ -145,4 +145,8 @@
         text-align: center;
     }
 
+    .graph-card {
+        margin-bottom: 30px;
+        padding: 15px;
+    }
 </style>

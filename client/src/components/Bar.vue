@@ -9,13 +9,6 @@
             text: 'Average Distance Per Ride vs. Pass Type'
         },
         scales: {
-            xAxes: [{
-                display: true,
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Pass Type'
-                }
-            }],
             yAxes: [{
                 display: true,
                 ticks: {
