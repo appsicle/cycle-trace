@@ -1,5 +1,5 @@
 # Cycle Trace 
-A simple web app to display visualizations of data regarding the LA bike share system to satisfy the requirements of [Capital One's coding challenge](https://www.mindsumo.com/contests/bikeshare-data). Optimized for mobile devices!
+A simple web app to display visualizations of data regarding the LA bike share system to satisfy the requirements of [Capital One's coding challenge](https://www.mindsumo.com/contests/bikeshare-data).
 
 ## Built With
 
@@ -30,8 +30,6 @@ I struggled with vue-chart.js' limitation on prohibiting html to be written on t
 When parsing through the data for the backend, I searched for data structures similar to python's defaultdict but settled on just using objects instead.
 
 When hosting the backend data, I struggled trying to deploy the backend onto heroku because I did not want to create a separate repository for my backend. Instead, I went with aws ec2 and used pm2 to keep the server up indefinitely.
-
-There were many challenges when designing the ui/ux for the page. The biggest problem was having the bottom dialog appear on scroll. Since the pages were purposely short to fit onto one screen without scrolling, there was no scrollbar. Thus, there was no way to detect the user overscrolling through the scrollbar's data. Instead, I tinkered with many variables until I discovered that 'wheel' activates even without a scrollbar. However, the wheel event fired almost 20 times when I scrolled just once, causing the bottom dialog to repeatedly open and close. To solve this problem, I used underscore.js to throttle the speed of event firing to once every 5 seconds.
 
 ## Improvements
 
